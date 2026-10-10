@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tesla GPS 지도 테스트</title>
+  <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=irzgg2fu19"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #101827;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header { padding: 20px; font-size: 20px; font-weight: bold; }
+    #map { width: 100%; height: calc(100vh - 70px); }
+  </style>
+</head>
+<body>
+  <header>Tesla GPS Dashboard — 지도 테스트</header>
+  <div id="map"></div>
+  <script>
+    function navermap_authFailure() {
+      alert("네이버 지도 API 인증 실패");
+    }
+
+    const map = new naver.maps.Map("map", {
+      center: new naver.maps.LatLng(37.5665, 126.9780),
+      zoom: 13
+    });
+  </script>
+</body>
+</html>
