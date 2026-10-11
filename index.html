@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla GPS | Drive Analytics</title><script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=irzgg2fu19"></script><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla GPS | Drive Analytics</title><script src="https://accounts.google.com/gsi/client" async defer></script><script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=irzgg2fu19"></script><style>
 :root{color-scheme:dark;--bg:#080c14;--panel:#111827;--border:#263245;--muted:#93a3b8;--blue:#62a5ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f1f5fb;font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.app{display:grid;grid-template-columns:330px minmax(0,1fr);height:100vh}.sidebar{padding:24px 18px;overflow:auto;border-right:1px solid var(--border);background:#0d1421}.brand{font-size:22px;font-weight:750;letter-spacing:-.6px}.brand span{color:var(--blue)}.sub{color:var(--muted);font-size:12px;margin-top:7px}.section{margin-top:28px}.label{font-size:11px;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:12px}.upload{display:block;cursor:pointer;border:1px dashed #456186;border-radius:12px;padding:18px 12px;text-align:center;background:#142238;color:#c5dcff}.upload:hover{border-color:var(--blue)}.upload input{display:none}.help{color:var(--muted);font-size:12px;line-height:1.6;margin-top:10px}.drive{width:100%;display:block;text-align:left;background:#141e2c;border:1px solid var(--border);border-radius:11px;padding:14px;margin-bottom:9px;color:white;cursor:pointer}.drive.active{border-color:var(--blue);background:#1b304a}.drive strong{display:block;font-size:14px}.drive small{display:block;color:var(--muted);margin-top:6px}.metricgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#131f2e;border:1px solid var(--border);border-radius:12px;padding:15px 12px}.metric .num{font-size:23px;font-weight:750;margin-top:7px}.metric .unit{font-size:12px;color:var(--muted)}.main{display:flex;flex-direction:column;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:19px 25px;border-bottom:1px solid var(--border)}.topbar h1{margin:0;font-size:18px}.topbar p{color:var(--muted);font-size:12px;margin:5px 0 0}.tag{font-size:11px;border:1px solid #355174;color:#9bc5ff;border-radius:99px;padding:8px 12px;white-space:nowrap}.mapwrap{position:relative;flex:1;min-height:300px}#map{width:100%;height:100%;background:#e8edf1}.floating{position:absolute;z-index:2;left:16px;top:16px;background:#101927ec;color:white;padding:12px 15px;border:1px solid #344458;border-radius:10px;max-width:calc(100% - 32px);font-size:12px;line-height:1.6}.bottom{border-top:1px solid var(--border);padding:15px 22px;display:flex;gap:16px;align-items:center}.bottom input{flex:1;min-width:50px;accent-color:#5ea8ff}.bottom button{background:#254c77;border:1px solid #4079b4;color:#fff;border-radius:8px;padding:9px 13px;cursor:pointer}#pointInfo{color:var(--muted);font-size:12px;min-width:180px}.empty{color:var(--muted);font-size:13px;line-height:1.8}#status{color:var(--muted);font-size:12px;margin-top:12px}@media(max-width:800px){.app{grid-template-columns:1fr;height:auto;min-height:100vh}.sidebar{border-right:0;border-bottom:1px solid var(--border);padding:18px}.main{height:70vh;min-height:500px}.section{margin-top:18px}.metricgrid{grid-template-columns:repeat(4,1fr)}.metric .num{font-size:17px}.metric{padding:10px 6px}.bottom{padding:12px;gap:8px}#pointInfo{min-width:120px;font-size:11px}}@media(max-width:480px){.metricgrid{grid-template-columns:repeat(2,1fr)}.tag{display:none}}
 .speed-legend{position:absolute;right:16px;top:16px;z-index:3;background:#101927f2;border:1px solid #344458;box-shadow:0 8px 25px #0006;border-radius:12px;padding:12px 14px;color:#f2f5fb;font-size:12px;line-height:1.45;min-width:142px}.speed-legend b{display:block;margin-bottom:9px;font-size:12px}.speed-legend .speed-row{display:flex;align-items:center;gap:9px;margin:6px 0;white-space:nowrap}.speed-legend .speed-dot{width:20px;height:6px;flex:none;border-radius:4px}@media(max-width:600px){.speed-legend{right:9px;top:68px;padding:9px 11px;font-size:11px;min-width:126px}.floating{right:9px;left:9px;top:9px}}
 
@@ -17,7 +17,24 @@
 .main{min-height:0}.mapwrap{flex:1 1 auto;min-height:280px}.analysis{border-top:1px solid var(--border);background:#0d1522;flex:0 0 auto;padding:14px 20px 16px;min-height:225px;max-height:42vh;display:flex;flex-direction:column;gap:10px}.analysis-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.analysis-title{font-size:14px;font-weight:700}.data-tabs{max-width:315px;width:100%}.analysis-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.analysis-toolbar input{min-width:145px;flex:1;max-width:260px;background:#111e2d;border:1px solid #30445c;color:#ecf4ff;border-radius:8px;padding:8px 10px;font:inherit;font-size:12px}.analysis-toolbar .info{font-size:11px;color:var(--muted);margin-left:auto}.table-wrap{overflow:auto;min-height:65px;flex:1;border:1px solid #263448;border-radius:10px}.data-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap;font-size:12px}.data-table th{position:sticky;top:0;z-index:1;background:#172437;color:#a8bbd2;font-size:11px;font-weight:650}.data-table td,.data-table th{padding:10px 13px;border-bottom:1px solid #253246}.data-table tbody tr{cursor:pointer}.data-table tbody tr:hover{background:#1e3450}.data-table tbody tr.active{background:#173858}.muted{color:#95a6be}.speed-pill{display:inline-flex;align-items:center;gap:7px}.speed-pill i{display:inline-block;width:8px;height:8px;border-radius:50%}.table-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#9caec3;font-size:11px;flex-wrap:wrap}.table-footer button{background:#152a42;color:#dcecff;border:1px solid #2a4766;border-radius:7px;padding:6px 10px;cursor:pointer}.table-footer button:disabled{opacity:.35;cursor:default}.empty-table{color:#8ea2bd;text-align:center;padding:24px 10px!important}.only-section{display:none}.only-section.active{display:block}.main .bottom{flex-shrink:0}
 @media(max-width:800px){.app{display:flex;flex-direction:column}.main{height:auto;min-height:unset;display:flex}.mapwrap{height:56vh;min-height:360px;flex:unset}.analysis{max-height:400px;height:350px;min-height:270px;padding:13px}.topbar{padding:14px 16px}.sidebar{overflow:visible}.bottom{min-height:65px}.speed-legend{font-size:10px}}
 @media(max-width:480px){.analysis-toolbar input{min-width:100px}.analysis-toolbar .info{margin-left:0}.data-table th,.data-table td{padding:9px}.analysis{height:365px}.calendar .day{min-height:39px}}
-</style></head><body><div class="app"><aside class="sidebar"><div class="brand">TESLA <span>GPS</span></div><div class="sub">PRIVATE DRIVE ANALYTICS · GPX LOCAL MODE</div><section class="section"><div class="label">운행기록 불러오기</div><label class="upload">＋ GPX 파일 선택 (복수 선택 가능)<input id="files" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml" multiple></label><div class="help">선택한 GPX는 브라우저 안에서만 분석됩니다. GitHub나 서버에 업로드하지 않습니다.</div><div id="status">GPX 파일을 선택해 주세요.</div></section><section class="section"><div class="label">운행기록 조회</div><div class="view-tabs" role="tablist"><button type="button" data-view="latest" class="active">최신순</button><button type="button" data-view="calendar">캘린더</button><button type="button" data-view="summary">요약표</button></div><div class="mini-tools"><strong id="viewTitle">최신 운행기록</strong><span id="driveCount" class="muted" style="font-size:11px">0건</span></div><div id="latestView" class="only-section active"><div id="drives" class="empty">기록이 아직 없습니다.</div></div><div id="calendarView" class="only-section"><div class="mini-tools"><button type="button" id="prevMonth" aria-label="이전 달">‹</button><strong id="calendarMonth">—</strong><button type="button" id="nextMonth" aria-label="다음 달">›</button></div><div class="calendar" id="calendar"></div><div class="calendar-summary" id="calendarSummary">초록색 날짜를 누르면 운행기록이 표시됩니다.</div></div><div id="summaryView" class="only-section"><div id="summaryList" class="empty">기록이 아직 없습니다.</div></div></section><section class="section"><div class="label">선택한 운행 통계</div><div class="metricgrid"><div class="metric"><div class="unit">이동거리</div><div class="num" id="distance">—</div><div class="unit">km</div></div><div class="metric"><div class="unit">최고속도</div><div class="num" id="maxSpeed">—</div><div class="unit">km/h</div></div><div class="metric"><div class="unit">평균속도 (전체)</div><div class="num" id="avgSpeed">—</div><div class="unit">km/h</div></div><div class="metric"><div class="unit">기록시간</div><div class="num" id="duration">—</div><div class="unit">시:분</div></div></div></section></aside><main class="main"><div class="topbar"><div><h1 id="heading">운행 경로</h1><p id="subtitle">GPX 파일을 선택하면 실제 운행 경로가 나타납니다.</p></div><div class="tag">● LOCAL DATA · NAVER MAPS</div></div><div class="mapwrap"><div id="map"></div><div class="speed-legend" aria-label="GPS 속도별 경로 색상"><b>주행 속도 · 정체 → 원활</b><div class="speed-row"><span class="speed-dot" style="background:#ef4444"></span>0–10 km/h · 정차·서행</div><div class="speed-row"><span class="speed-dot" style="background:#f97316"></span>10–30 km/h · 느림</div><div class="speed-row"><span class="speed-dot" style="background:#facc15"></span>30–50 km/h · 보통</div><div class="speed-row"><span class="speed-dot" style="background:#22c55e"></span>50–80 km/h · 원활</div><div class="speed-row"><span class="speed-dot" style="background:#2563eb"></span>80 km/h 이상 · 매우 원활</div><div style="margin-top:9px;max-width:185px;color:#aab9d0;font-size:10px;line-height:1.5">실제 교통 정체 정보가 아닌 차량 GPS 속도 기준입니다.</div></div><div class="floating" id="mapHint">왼쪽에서 GPX 파일을 불러와 주세요.</div></div><section class="analysis"><div class="analysis-head"><div class="analysis-title" id="tableHeading">운행 데이터 표</div><div class="data-tabs"><button type="button" id="dailyTableTab" class="active">운행 요약표</button><button type="button" id="gpsTableTab">GPS 상세표</button></div></div><div class="analysis-toolbar"><input id="tableSearch" type="search" placeholder="날짜 · 시간 · 속도 검색" aria-label="표 검색"><button class="toolbtn" id="exportCsv" type="button">↓ CSV 다운로드</button><span class="info" id="tableInfo">GPX 파일을 불러와 주세요.</span></div><div class="table-wrap"><table class="data-table"><thead id="tableHead"></thead><tbody id="tableBody"><tr><td class="empty-table">운행기록이 없습니다.</td></tr></tbody></table></div><div class="table-footer"><span id="pageStatus">0건</span><span><button id="pagePrev" type="button">이전</button> <button id="pageNext" type="button">다음</button></span></div></section><div class="bottom"><button id="play">▶ 재생</button><input id="timeline" type="range" min="0" max="100" value="0" disabled><div id="pointInfo">시간 · 속도</div></div></main></div><script>
+
+/* Google OAuth: 좌표를 GitHub에 저장하지 않고 Sheets 읽기 */
+.gauth{background:#132033;border:1px solid #2a4769;border-radius:11px;padding:13px;display:flex;flex-direction:column;gap:9px}
+.gauth input{width:100%;border:1px solid #355070;border-radius:7px;background:#091422;color:#e4f0ff;padding:9px 10px;font-size:12px}
+.gauth button{background:#245789;color:#fff;border:1px solid #4375ab;padding:10px;border-radius:8px;font-weight:650;cursor:pointer}
+.gauth button:disabled{opacity:.6;cursor:wait}
+.gauth .linkbtn{background:#10263f;font-weight:500;font-size:12px}
+.gauth .labeltext{color:#9cb1cd;font-size:11px;line-height:1.5}
+#googleStatus{font-size:12px;color:#acc3e5;line-height:1.5;overflow-wrap:anywhere}
+</style></head><body><div class="app"><aside class="sidebar"><div class="brand">TESLA <span>GPS</span></div><div class="sub">PRIVATE DRIVE ANALYTICS · GOOGLE SHEETS</div>
+<section class="section"><div class="label">자동 운행기록 조회</div>
+<div class="gauth"><div class="labeltext">비공개 Google Sheets 인증 조회 · 차량 위치는 GitHub에 저장되지 않습니다.</div>
+<input id="oauthClientId" type="text" autocomplete="off" spellcheck="false" placeholder="Google OAuth 웹 클라이언트 ID (최초 1회 입력)">
+<button type="button" id="googleConnect">Google 계정으로 운행기록 불러오기</button>
+<button type="button" class="linkbtn" id="googleRefresh">↻ 시트에서 새로고침</button>
+<div id="googleStatus">Google 계정 연결 전 · GPX 파일 수동 선택도 가능</div></div>
+</section>
+<section class="section"><div class="label">GPX 파일로 직접 불러오기 (선택)</div><label class="upload">＋ GPX 파일 선택 (복수 선택 가능)<input id="files" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml" multiple></label><div class="help">선택한 GPX는 브라우저 안에서만 분석됩니다. GitHub나 서버에 업로드하지 않습니다.</div><div id="status">GPX 파일을 선택해 주세요.</div></section><section class="section"><div class="label">운행기록 조회</div><div class="view-tabs" role="tablist"><button type="button" data-view="latest" class="active">최신순</button><button type="button" data-view="calendar">캘린더</button><button type="button" data-view="summary">요약표</button></div><div class="mini-tools"><strong id="viewTitle">최신 운행기록</strong><span id="driveCount" class="muted" style="font-size:11px">0건</span></div><div id="latestView" class="only-section active"><div id="drives" class="empty">기록이 아직 없습니다.</div></div><div id="calendarView" class="only-section"><div class="mini-tools"><button type="button" id="prevMonth" aria-label="이전 달">‹</button><strong id="calendarMonth">—</strong><button type="button" id="nextMonth" aria-label="다음 달">›</button></div><div class="calendar" id="calendar"></div><div class="calendar-summary" id="calendarSummary">초록색 날짜를 누르면 운행기록이 표시됩니다.</div></div><div id="summaryView" class="only-section"><div id="summaryList" class="empty">기록이 아직 없습니다.</div></div></section><section class="section"><div class="label">선택한 운행 통계</div><div class="metricgrid"><div class="metric"><div class="unit">이동거리</div><div class="num" id="distance">—</div><div class="unit">km</div></div><div class="metric"><div class="unit">최고속도</div><div class="num" id="maxSpeed">—</div><div class="unit">km/h</div></div><div class="metric"><div class="unit">평균속도 (전체)</div><div class="num" id="avgSpeed">—</div><div class="unit">km/h</div></div><div class="metric"><div class="unit">기록시간</div><div class="num" id="duration">—</div><div class="unit">시:분</div></div></div></section></aside><main class="main"><div class="topbar"><div><h1 id="heading">운행 경로</h1><p id="subtitle">Google 계정으로 로그인하거나 GPX 파일을 선택해 주세요.</p></div><div class="tag">● PRIVATE DATA · NAVER MAPS</div></div><div class="mapwrap"><div id="map"></div><div class="speed-legend" aria-label="GPS 속도별 경로 색상"><b>주행 속도 · 정체 → 원활</b><div class="speed-row"><span class="speed-dot" style="background:#ef4444"></span>0–10 km/h · 정차·서행</div><div class="speed-row"><span class="speed-dot" style="background:#f97316"></span>10–30 km/h · 느림</div><div class="speed-row"><span class="speed-dot" style="background:#facc15"></span>30–50 km/h · 보통</div><div class="speed-row"><span class="speed-dot" style="background:#22c55e"></span>50–80 km/h · 원활</div><div class="speed-row"><span class="speed-dot" style="background:#2563eb"></span>80 km/h 이상 · 매우 원활</div><div style="margin-top:9px;max-width:185px;color:#aab9d0;font-size:10px;line-height:1.5">실제 교통 정체 정보가 아닌 차량 GPS 속도 기준입니다.</div></div><div class="floating" id="mapHint">왼쪽에서 Google 로그인 또는 GPX 파일 불러오기를 해주세요.</div></div><section class="analysis"><div class="analysis-head"><div class="analysis-title" id="tableHeading">운행 데이터 표</div><div class="data-tabs"><button type="button" id="dailyTableTab" class="active">운행 요약표</button><button type="button" id="gpsTableTab">GPS 상세표</button></div></div><div class="analysis-toolbar"><input id="tableSearch" type="search" placeholder="날짜 · 시간 · 속도 검색" aria-label="표 검색"><button class="toolbtn" id="exportCsv" type="button">↓ CSV 다운로드</button><span class="info" id="tableInfo">GPX 파일을 불러와 주세요.</span></div><div class="table-wrap"><table class="data-table"><thead id="tableHead"></thead><tbody id="tableBody"><tr><td class="empty-table">운행기록이 없습니다.</td></tr></tbody></table></div><div class="table-footer"><span id="pageStatus">0건</span><span><button id="pagePrev" type="button">이전</button> <button id="pageNext" type="button">다음</button></span></div></section><div class="bottom"><button id="play">▶ 재생</button><input id="timeline" type="range" min="0" max="100" value="0" disabled><div id="pointInfo">시간 · 속도</div></div></main></div><script>
 'use strict';let map,polylines=[],marker,startMarker,endMarker,tracks=[],selected=-1,timer=null;let sideView='latest',tableMode='daily',tablePage=0,calYear=2026,calMonth=9,tableRows=[],selectedPoint=-1;const PAGE_SIZE=75;const $=id=>document.getElementById(id);function navermap_authFailure(){ $('mapHint').textContent='네이버 지도 인증 실패: Ncloud Web 서비스 URL을 확인하세요.'}try{map=new naver.maps.Map('map',{center:new naver.maps.LatLng(37.5665,126.978),zoom:11,mapTypeControl:true,zoomControl:true});}catch(e){$('mapHint').textContent='지도 로딩 오류: '+e.message}
 const fmt=(date)=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(date);const hm=s=>`${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}`;
 function parseGPX(xml,name){const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw Error('GPX XML 형식이 아닙니다.');const nodes=[...doc.getElementsByTagName('trkpt')];if(!nodes.length)throw Error('트랙 좌표가 없습니다.');const pts=[];for(const n of nodes){const lat=Number(n.getAttribute('lat')),lng=Number(n.getAttribute('lon'));if(!Number.isFinite(lat)||!Number.isFinite(lng))continue;const get=tag=>{const el=n.getElementsByTagName(tag)[0];return el?el.textContent:null};const ts=Date.parse(get('time')||'');const speed=Number(get('speed')||0)*3.6;pts.push({lat,lng,ts,speed:Number.isFinite(speed)?speed:0})}if(!pts.length)throw Error('유효한 좌표가 없습니다.');const header=xml.slice(0,1400);const dist=header.match(/Distance\s*=\s*([\d.]+)\s*km/i);const max=header.match(/Max Speed\s*=\s*([\d.]+)\s*km\/h/i);const avg=header.match(/Avg Speed\s*=\s*([\d.]+)\s*\|/i);const dur=header.match(/Duration\s*=\s*(\d+):(\d+):(\d+)/i);const duration=dur?Number(dur[1])*3600+Number(dur[2])*60+Number(dur[3]):(pts.at(-1).ts-pts[0].ts)/1000;let computed=0;const rad=x=>x*Math.PI/180;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],dlat=rad(b.lat-a.lat),dlng=rad(b.lng-a.lng),q=Math.sin(dlat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dlng/2)**2;const km=6371*2*Math.atan2(Math.sqrt(q),Math.sqrt(Math.max(0,1-q)));if(km<0.25)computed+=km}return {name,pts,date:new Date(pts[0].ts),distance:dist?Number(dist[1]):computed,maxSpeed:max?Number(max[1]):Math.max(...pts.map(p=>p.speed)),avgSpeed:avg?Number(avg[1]):(duration>0?computed/duration*3600:0),duration}}
@@ -80,4 +97,130 @@ function drawSpeedRoute(pts,path){
 function select(i){if(!map)return;clearInterval(timer);timer=null;$('play').textContent='▶ 재생';selected=i;selectedPoint=-1;refreshAll();const t=tracks[i];if(!t)return;clearMap();const pts=t.pts;const path=pts.map(p=>new naver.maps.LatLng(p.lat,p.lng));drawSpeedRoute(pts,path);startMarker=new naver.maps.Marker({map,position:path[0],title:'출발'});endMarker=new naver.maps.Marker({map,position:path.at(-1),title:'도착',icon:{content:'<div style="background:#172d48;color:white;padding:6px 10px;border-radius:16px;border:2px solid #72e2ab;font-size:12px">도착</div>',anchor:new naver.maps.Point(22,15)}});marker=new naver.maps.Marker({map,position:path[0],title:'현재 재생 위치',icon:{content:'<div style="height:17px;width:17px;background:#4da2ff;border:3px solid white;border-radius:50%;box-shadow:0 0 0 5px #4da2ff44"></div>',anchor:new naver.maps.Point(8,8)}});const bounds=new naver.maps.LatLngBounds();path.forEach(p=>bounds.extend(p));map.fitBounds(bounds,{top:45,right:45,bottom:45,left:45});$('distance').textContent=t.distance.toFixed(1);$('maxSpeed').textContent=t.maxSpeed.toFixed(0);$('avgSpeed').textContent=t.avgSpeed.toFixed(1);$('duration').textContent=hm(t.duration);$('heading').textContent=fmt(t.date).slice(0,14)+' 운행 경로';$('subtitle').textContent=`GPS ${pts.length.toLocaleString()}개 좌표 · 실제 운행기록`;$('mapHint').textContent=`출발 ${fmt(new Date(pts[0].ts))}  →  도착 ${fmt(new Date(pts.at(-1).ts))}`;$('timeline').disabled=false;$('timeline').max=pts.length-1;$('timeline').value=0;updatePoint(0);renderTable()}
 function updatePoint(i){const t=tracks[selected];if(!t)return;const p=t.pts[i];if(!p)return;marker.setPosition(new naver.maps.LatLng(p.lat,p.lng));$('pointInfo').textContent=`${fmt(new Date(p.ts)).slice(-5)} · ${p.speed.toFixed(0)} km/h`;selectedPoint=i}
 $('timeline').addEventListener('input',e=>updatePoint(Number(e.target.value)));$('play').onclick=()=>{if(selected<0)return;if(timer){clearInterval(timer);timer=null;$('play').textContent='▶ 재생';return}$('play').textContent='Ⅱ 일시정지';timer=setInterval(()=>{const slider=$('timeline');let next=Number(slider.value)+Math.max(1,Math.ceil(tracks[selected].pts.length/450));if(next>=Number(slider.max)){next=Number(slider.max);clearInterval(timer);timer=null;$('play').textContent='▶ 재생'}slider.value=next;updatePoint(next)},80)};
-refreshAll();</script></body></html>
+refreshAll();
+
+// Google Sheets 인증 읽기: GitHub Pages에는 좌표, 비밀 토큰, API 비밀키를 올리지 않습니다.
+const TESLA_GOOGLE_SHEET_ID = '1lGpb-516mbgXUYn-ii3_7w64vqHOigkLL3gaf5n2w_0';
+const TESLA_GOOGLE_OAUTH_SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+const TESLA_OAUTH_ID_LOCAL_KEY = 'tesla-gps-oauth-client-id';
+let teslaGoogleToken = null;
+let teslaGoogleTokenClient = null;
+let teslaGoogleTokenExpires = 0;
+let teslaGoogleLoading = false;
+$('oauthClientId').value = localStorage.getItem(TESLA_OAUTH_ID_LOCAL_KEY) || '';
+function teslaGoogleStatus(msg, error=false) {
+  $('googleStatus').textContent=msg;
+  $('googleStatus').style.color=error?'#fca5a5':'#a7c8ef';
+}
+function teslaParseSheetTime(value) {
+  if(value == null || String(value).trim()==='')return NaN;
+  if(typeof value==='number')return (value-25569)*86400000-9*3600000;
+  const str=String(value).trim();
+  // 시트 한국시간: 2026-10-11 08:43:35 (문자열 또는 표시된 날짜)
+  const m=str.match(/^(\d{4})[.\-/]\s*(\d{1,2})[.\-/]\s*(\d{1,2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
+  if(m)return Date.parse(`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}T${m[4].padStart(2,'0')}:${m[5]}:${m[6]||'00'}+09:00`);
+  const r=Date.parse(str);
+  return Number.isFinite(r)?r:NaN;
+}
+function teslaTracksFromSheet(rows) {
+  const grouped=new Map();
+  const pointKeys=new Set();
+  for(const r of rows){
+    if(!r || r.length<3)continue;
+    const ts=teslaParseSheetTime(r[0]);
+    const lat=Number(r[1]),lng=Number(r[2]);
+    const speed=r[3]==null||r[3]===''?0:Number(r[3]);
+    if(!Number.isFinite(ts)||!Number.isFinite(lat)||!Number.isFinite(lng)||
+       Math.abs(lat)>90||Math.abs(lng)>180)continue;
+    const key=`${ts}|${lat.toFixed(6)}|${lng.toFixed(6)}`;
+    if(pointKeys.has(key))continue;
+    pointKeys.add(key);
+    const p={ts,lat,lng,speed:Number.isFinite(speed)?Math.max(0,speed):0};
+    const day=localKey(new Date(ts));
+    if(!grouped.has(day))grouped.set(day,[]);
+    grouped.get(day).push(p);
+  }
+  const out=[];
+  for(const [day,pts] of grouped){
+    pts.sort((a,b)=>a.ts-b.ts);
+    if(!pts.length)continue;
+    let distance=0,maxSpeed=0;
+    for(let i=0;i<pts.length;i++){
+      const b=pts[i];maxSpeed=Math.max(maxSpeed,b.speed);
+      if(i===0)continue;
+      const a=pts[i-1],gap=(b.ts-a.ts)/1000;
+      // 오래 끊긴 구간은 직선으로 연결해 주행거리에 더하지 않습니다.
+      if(gap<=0||gap>600)continue;
+      const rad=x=>x*Math.PI/180;
+      const dl=rad(b.lat-a.lat),dn=rad(b.lng-a.lng);
+      const h=Math.sin(dl/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dn/2)**2;
+      const km=6371*2*Math.atan2(Math.sqrt(Math.max(0,h)),Math.sqrt(Math.max(0,1-h)));
+      if(km<=.25)distance+=km;
+    }
+    const duration=Math.max(0,(pts[pts.length-1].ts-pts[0].ts)/1000);
+    out.push({name:day+' · Google Sheets',pts,date:new Date(pts[0].ts),distance,
+      maxSpeed,avgSpeed:duration?distance/duration*3600:0,duration});
+  }
+  return out.sort((a,b)=>b.date-a.date);
+}
+async function teslaReadPrivateSheet() {
+  if(teslaGoogleLoading)return;
+  if(!teslaGoogleToken || Date.now()>=teslaGoogleTokenExpires){
+    teslaGoogleStatus('로그인 토큰이 만료됐어. Google 계정 버튼을 다시 눌러줘.',true);
+    return;
+  }
+  teslaGoogleLoading=true;
+  $('googleRefresh').disabled=true;
+  try {
+    teslaGoogleStatus('비공개 GPS_LOG 데이터 조회 중...');
+    const range=encodeURIComponent('GPS_LOG!A2:G');
+    const url=`https://sheets.googleapis.com/v4/spreadsheets/${TESLA_GOOGLE_SHEET_ID}/values/${range}?valueRenderOption=FORMATTED_VALUE`;
+    const r=await fetch(url,{method:'GET',headers:{'Authorization':`Bearer ${teslaGoogleToken}`},cache:'no-store'});
+    const data=await r.json();
+    if(!r.ok)throw Error(data?.error?.message||'Google Sheets 조회 실패 ('+r.status+')');
+    const rows=data.values||[];
+    tracks=teslaTracksFromSheet(rows);
+    selected=-1;selectedPoint=-1;tablePage=0;
+    if(tracks.length){
+      const d=tracks[0].date;
+      calYear=d.getFullYear();calMonth=d.getMonth();
+      select(0);
+    }else{
+      refreshAll();
+      teslaGoogleStatus('GPS_LOG 시트에 아직 기록이 없어.');
+      return;
+    }
+    teslaGoogleStatus(`Google Sheets 연결됨 · ${tracks.length}일 · GPS ${rows.length.toLocaleString()}행 · 5분마다 새로고침`);
+    $('status').textContent='Google Sheets에서 비공개 운행기록을 읽었습니다.';
+  }catch(err){
+    teslaGoogleStatus('시트 읽기 실패: '+err.message,true);
+  }finally{
+    $('googleRefresh').disabled=false;
+    teslaGoogleLoading=false;
+  }
+}
+$('googleConnect').addEventListener('click',()=>{
+  const clientId=$('oauthClientId').value.trim();
+  if(!/^\d+-[\w-]+\.apps\.googleusercontent\.com$/.test(clientId)){
+    teslaGoogleStatus('Google Cloud에서 만든 OAuth 2.0 웹 클라이언트 ID를 입력해 줘.',true);return;
+  }
+  if(!window.google?.accounts?.oauth2){
+    teslaGoogleStatus('Google 로그인 라이브러리를 불러오지 못했어. 인터넷 연결 후 새로고침해 줘.',true);return;
+  }
+  localStorage.setItem(TESLA_OAUTH_ID_LOCAL_KEY,clientId);
+  teslaGoogleTokenClient=google.accounts.oauth2.initTokenClient({
+    client_id:clientId,
+    scope:TESLA_GOOGLE_OAUTH_SCOPE,
+    callback:async response=>{
+      if(response.error){teslaGoogleStatus('Google 로그인 오류: '+response.error,true);return;}
+      teslaGoogleToken=response.access_token;
+      teslaGoogleTokenExpires=Date.now()+Math.max(60,Number(response.expires_in||3600)-90)*1000;
+      await teslaReadPrivateSheet();
+    },
+    error_callback:e=>teslaGoogleStatus('Google 로그인 실패: '+(e.type||'인증창을 확인해 줘.'),true)
+  });
+  teslaGoogleTokenClient.requestAccessToken({prompt:'consent'});
+});
+$('googleRefresh').addEventListener('click',teslaReadPrivateSheet);
+setInterval(()=>{if(teslaGoogleToken && Date.now()<teslaGoogleTokenExpires)teslaReadPrivateSheet()},300000);
+</script></body></html>
